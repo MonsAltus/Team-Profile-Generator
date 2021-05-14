@@ -4,7 +4,8 @@
 
 ## Description:
 This application creates a HTML page to display various information about a team based on user input through Inquirer.
-The page is styled through Bootstrap and includes card elements displaying employee data for a Manager, Engineers, and Interns. 
+The page is styled through Bootstrap and includes card elements displaying employee data for a Manager, Engineers, and Interns.
+Employee information includes Name, Id number, and Email, as well as office number for Managers, Github profiles for Engineers, and school or study for Interns.
 
 ## Table of Contents:
 [User Story](#User-Story)<br>
@@ -12,7 +13,7 @@ The page is styled through Bootstrap and includes card elements displaying emplo
 [Usage](#Usage)<br>
 [Tests](#Tests)<br>
 [Contributions](#Contributions)<br>
-[Questions](#Questions)<br>
+[Contact](#Contact)<br>
 [License](#License)<br>
 
 ## User Story:
@@ -37,8 +38,8 @@ Run `npm test` in the root folder.
 ## Contributions:
 Technologies used include JavaScript, Node.js, Inquirer, and Jest.
 
-## Questions:
-Check my [Github](https://github.com/MonsAltus).<br>
+## Contact:
+Check out my [Github](https://github.com/MonsAltus).<br>
 Email me at <hacklander.dev@gmail.com>
 
 ## License:
