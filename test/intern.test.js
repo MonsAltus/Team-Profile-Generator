@@ -1,28 +1,16 @@
 const Employee = require('../lib/employee')
 const Intern = require('../lib/intern')
 
-test('', () => {
-    
+test('Can set school through constructor argument', () => {
+    const testValue = 10
+    const e = new Intern('Foo', 1, 'test@email.com', testValue)
+    expect(e.school).toBe(testValue)
 })
 
-test('', () => {
-    
-})
-
-test('', () => {
-    
-})
-
-test('', () => {
-    
-})
-
-test('', () => {
-    
-})
-
-test('', () => {
-    
+test('Can get school from getSchool()', () => {
+    const testValue = 10
+    const e = new Intern('Foo', 1, 'test@email.com', testValue)
+    expect(e.getSchool()).toBe(testValue)
 })
 
 test('getRole() should return \'Intern\'', () => {
