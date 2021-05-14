@@ -15,6 +15,7 @@ const teamInfo = []
 function runApp() {
     // Prompt for manager’s name, employee ID, email, and office number
     function generateManager() {
+        console.log('//// Adding Manager ////')
         inquirer.prompt([
             {
             type: 'input',
@@ -45,18 +46,19 @@ function runApp() {
 
     // After manager details are filled prompt to Add Intern, Add Engineer, or Finish Team.
     function generateTeam() {
-    inquirer.prompt([
-        {
-        type: 'list',
-        message: 'Select an option:',
-        choices: [
-            'Add Engineer',
-            'Add Intern',
-            'Finish Team'
-            ]
-        }
-    ])
-    // SWITCH FUNTION BASED ON ANSWER
+        console.log('//// Add another employee, or finish team ////')
+        inquirer.prompt([
+            {
+            type: 'list',
+            message: 'Select an option:',
+            choices: [
+                'Add Engineer',
+                'Add Intern',
+                'Finish Team'
+                ]
+            }
+        ])
+        // SWITCH FUNTION BASED ON ANSWER
         switch(answer) {
             case 'Add Engineer':
                 addEngineer()
@@ -66,6 +68,7 @@ function runApp() {
                 break
             case 'Finish Team':
                 //write to file
+                finishTeam()
                 break
         }
     }
@@ -124,6 +127,12 @@ function runApp() {
             },
         ])
         //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+    }
+
+
+    finishTeam() {
+        console.log(teamInfo)
+        //WRITE HTML FILE USING teamInfo 
     }
 
     generateManager()
