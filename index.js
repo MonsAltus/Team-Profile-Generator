@@ -3,39 +3,48 @@ const fs = require('fs')
 // REQUIRE TEMPLATE HERE?
 
 // Link employee classes.
-const Employee = require('./lib/employee')
+// const Employee = require('./lib/employee')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
 
+const teamInfo = [] 
+
 //WHEN I start the application
 
-// Prompt for manager’s name, employee ID, email, and office number
-    inquirer.prompt([
-        {
-        type: 'input',
-        message: 'Enter the Manager\'s name:',
-        name: 'name'
-        },
-        {
-        type: 'input',
-        message: 'Enter the Manager\'s ID number:',
-        name: 'id'
-        },
-        {
-        type: 'input',
-        message: 'Enter the Manager\'s Email:',
-        name: 'email'
-        },
-        {
-        type: 'input',
-        message: 'Enter the Manager\'s Office Number:',
-        name: 'officeNumber'
-        },
-    ])
+function runApp() {
+    // Prompt for manager’s name, employee ID, email, and office number
+    function generateManager() {
+        inquirer.prompt([
+            {
+            type: 'input',
+            message: 'Enter the Manager\'s name:',
+            name: 'name'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Manager\'s ID number:',
+            name: 'id'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Manager\'s Email:',
+            name: 'email'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Manager\'s Office Number:',
+            name: 'officeNumber'
+            },
+        ])
+        //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+    //run function to gereate the rest of the team.
+    generateTeam()
+    }
 
 
-// After manager details are filled prompt to Add Intern, Add Engineer, or Finish Team.
+    // After manager details are filled prompt to Add Intern, Add Engineer, or Finish Team.
+    function generateTeam() {
     inquirer.prompt([
         {
         type: 'list',
@@ -47,34 +56,77 @@ const Intern = require('./lib/intern')
             ]
         }
     ])
+    // SWITCH FUNTION BASED ON ANSWER
+        switch(answer) {
+            case 'Add Engineer':
+                addEngineer()
+                break
+            case 'Add Intern':
+                addIntern()
+                break
+            case 'Finish Team':
+                //write to file
+                break
+        }
+    }
 
+    // If Add Engineer is choosen, prompt:
+    function addEngineer() {
+        console.log('//// Adding Engineer ////')
+        inquirer.prompt([
+            {
+            type: 'input',
+            message: 'Enter the Engineer\'s name:',
+            name: 'name'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Engineer\'s ID number:',
+            name: 'id'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Engineer\'s Email:',
+            name: 'email'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Engineer\'s Github account:',
+            name: 'school'
+            },
+        ])
+        //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+    }
 
-// If Add intern or engineer is choosen, prompt:
-// Console log '///Adding Intern///' or '///Adding Engineer:///'
-    inquirer.prompt([
-        {
-        type: 'input',
-        message: 'Enter the Employee\'s name:',
-        name: 'name'
-        },
-        {
-        type: 'input',
-        message: 'Enter the Employee\'s ID number:',
-        name: 'id'
-        },
-        {
-        type: 'input',
-        message: 'Enter the Employee\'s Email:',
-        name: 'email'
-        },
-        {
-        type: 'input',
-        message: 'Enter the Employee\'s Github account:',
-        name: 'school'
-        },
-        {
-        type: 'input',
-        message: 'Enter the Employee\'s school:',
-        name: 'school'
-        },
-    ])
+    // If Add Intern is choosen, prompt:
+    function addIntern() {
+        console.log('//// Adding Intern ////')
+        inquirer.prompt([
+            {
+            type: 'input',
+            message: 'Enter the Intern\'s name:',
+            name: 'name'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Intern\'s ID number:',
+            name: 'id'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Intern\'s Email:',
+            name: 'email'
+            },
+            {
+            type: 'input',
+            message: 'Enter the Intern\'s school:',
+            name: 'school'
+            },
+        ])
+        //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+    }
+
+    generateManager()
+}
+
+runApp()
