@@ -23,16 +23,16 @@ Employee information includes Name, Id number, and Email, as well as office numb
 
 ## Installation:
 <!-- Create a package.json file by running `npm init` in the root folder.<br> -->
-Install dependencies by running `npm i` in the root folder.
+Install dependencies by running `npm i` in your terminal in the root folder.
 
 ## Usage:
-Once installed, enter `node index.js` into your node terminal in the root folder of the application. Answer the following prompts.
-[Video of the app running in VSCode]( <!--ADD VIDEO URL--> )<br>
-<!-- ![Image of project running in VSCode terminal.](./assets/preview1.png)<br> -->
-<!-- ![Second Image of project running in VSCode terminal.](./assets/preview2.png)<br> -->
+Once installed, enter `node index.js` into your terminal in the root folder of the application. Answer the following prompts.<br>
+[Video of the tests and app running in VSCode]( <!--ADD VIDEO URL--> )<br>
+![Image of tests running in VSCode terminal.](./assets/preview1.png)<br>
+<!-- ![Image of app running in VSCode terminal.](./assets/preview2.png)<br> -->
 
 ## Tests:
-Tests icluded check input for the employee classes.<br>
+Tests included to check input for the employee classes.<br>
 Run `npm test` in the root folder.
 
 ## Contributions:
