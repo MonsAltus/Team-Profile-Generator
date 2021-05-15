@@ -5,7 +5,7 @@
 ## Description:
 This application creates a HTML page to display various information about a team based on user input through Inquirer.
 The page is styled through Bootstrap and includes card elements displaying employee data for a Manager, Engineers, and Interns.
-Employee information includes Name, Id number, and Email, as well as office number for Managers, Github profiles for Engineers, and school or study for Interns.
+Employee information includes Name, Id number, and Email, as well as office number for Managers, Github profiles for Engineers, and school of study for Interns.
 
 ## Table of Contents:
 [User Story](#User-Story)<br>
@@ -22,7 +22,7 @@ Employee information includes Name, Id number, and Email, as well as office numb
 - SO THAT I have quick access to their emails and GitHub profiles
 
 ## Installation:
-Create a package.json file by running `npm init` in the root folder.<br>
+<!-- Create a package.json file by running `npm init` in the root folder.<br> -->
 Install dependencies by running `npm i` in the root folder.
 
 ## Usage:
