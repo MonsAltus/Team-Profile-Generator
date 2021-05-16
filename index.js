@@ -1,14 +1,9 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 const generateHtml = require('./src/generateHtml')
-// REQUIRE TEMPLATE HERE?
-
-// Link employee classes.
-// const Employee = require('./lib/employee')
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
-
 const teamInfo = [] 
 
 //WHEN I start the application
@@ -42,8 +37,8 @@ function runApp() {
             const manager = new Manager(response.name, response.id, response.email, response.officeNumber)
             teamInfo.push(manager)
             addEmployee()
+            //run function to generate the rest of the team.
         })
-    //run function to gereate the rest of the team.
     }
 
     // After manager details are filled prompt to Add Intern, Add Engineer, or Finish Team.
@@ -61,7 +56,7 @@ function runApp() {
                 ]
             }
         ]).then((response) => {
-            // console.log(response)
+            // SWITCH FUNCTION BASED ON ANSWER
             switch (response.addEmployee) {
             case 'Add Engineer':
                 addEngineer()
@@ -74,7 +69,6 @@ function runApp() {
                 break
             }
         })
-        // SWITCH FUNCTION BASED ON ANSWER
     }
 
     // If Add Engineer is choosen, prompt:
@@ -142,9 +136,8 @@ function runApp() {
     }
 
     function finishTeam() {
-        console.log(teamInfo)
-        //WRITE HTML FILE USING teamInfo 
-        // fs.writeFile('NEW-TEAM.html', generateHtml(teamInfo), 'utf-8')
+        // console.log(teamInfo)
+        //WRITE HTML FILE USING teamInfo
         fs.writeFile('./dist/NEW-TEAM.html', generateHtml(teamInfo), (err) => err ? console.log(err) : console.log('New HTML file created! Check /dist folder.'));
     }
 
