@@ -22,14 +22,14 @@ Employee information includes Name, Id number, and Email, as well as office numb
 - SO THAT I have quick access to their emails and GitHub profiles
 
 ## Installation:
-<!-- Create a package.json file by running `npm init` in the root folder.<br> -->
 Install dependencies by running `npm i` in your terminal in the root folder.
 
 ## Usage:
 Once installed, enter `node index.js` into your terminal in the root folder of the application. Answer the following prompts.<br>
-[Video of the tests and app running in VSCode]( <!--ADD VIDEO URL--> )<br>
+[Video of the tests and app running in VSCode](https://drive.google.com/file/d/1wUHj8n3GcWNp_x_zlvDgCMx_R1MaHL_L/view)<br>
 ![Image of tests running in VSCode terminal.](./assets/preview1.png)<br>
-<!-- ![Image of app running in VSCode terminal.](./assets/preview2.png)<br> -->
+![Image of app running in VSCode terminal.](./assets/preview2.png)<br>
+![Image of sample html](./assets/preview3.png)<br>
 
 ## Tests:
 Tests included to check input for the employee classes.<br>
