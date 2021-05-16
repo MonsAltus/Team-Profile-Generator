@@ -12,7 +12,6 @@ const Intern = require('./lib/intern')
 const teamInfo = [] 
 
 //WHEN I start the application
-
 function runApp() {
     // Prompt for manager’s name, employee ID, email, and office number
     function generateManager() {
@@ -45,7 +44,6 @@ function runApp() {
             addEmployee()
         })
     //run function to gereate the rest of the team.
-    // addEmployee()
     }
 
     // After manager details are filled prompt to Add Intern, Add Engineer, or Finish Team.
@@ -55,26 +53,24 @@ function runApp() {
             {
             type: 'list',
             message: 'Select an option:',
+            name: 'addEmployee',
             choices: [
                 'Add Engineer',
                 'Add Intern',
                 'Finish Team'
                 ]
             }
-        ])
-        // SWITCH FUNTION BASED ON ANSWER
-        switch(answer) {
-            case 'Add Engineer':
+        ]).then((response) => {
+            // console.log(response)
+            if (response.addEmployee === 'Add Engineer') {
                 addEngineer()
-                break
-            case 'Add Intern':
+            } else if (response.addEmployee === 'Add Intern') {
                 addIntern()
-                break
-            case 'Finish Team':
-                //write to file
+            } else if (response.addEmployee === 'Finish Team') {
                 finishTeam()
-                break
-        }
+            }
+        })
+        // SWITCH FUNCTION BASED ON ANSWER
     }
 
     // If Add Engineer is choosen, prompt:
@@ -99,14 +95,14 @@ function runApp() {
             {
             type: 'input',
             message: 'Enter the Engineer\'s Github account:',
-            name: 'school'
+            name: 'github'
             },
         ]).then(response => {
             //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
             const engineer = new Engineer(response.name, response.id, response.email, response.github)
             teamInfo.push(engineer)
+            addEmployee()
         })
-        addEmployee()
     }
 
     // If Add Intern is choosen, prompt:
@@ -137,15 +133,15 @@ function runApp() {
             //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
             const intern = new Intern(response.name, response.id, response.email, response.school)
             teamInfo.push(intern)
+            addEmployee()
         })
-        addEmployee()
     }
 
     function finishTeam() {
         console.log(teamInfo)
         //WRITE HTML FILE USING teamInfo 
-        fs.writeFile('NEW-TEAM.html', generateHtml(teamInfo), 'utf-8')
-        // fs.writeFile('NEW-TEAM.html', generateHtml(teamInfo), (err) => err ? console.log(err) : console.log('New HTML file created! Check /dist folder.'));
+        // fs.writeFile('NEW-TEAM.html', generateHtml(teamInfo), 'utf-8')
+        fs.writeFile('./dist/NEW-TEAM.html', generateHtml(teamInfo), (err) => err ? console.log(err) : console.log('New HTML file created! Check /dist folder.'));
     }
 
     generateManager()

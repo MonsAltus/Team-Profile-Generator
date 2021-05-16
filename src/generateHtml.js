@@ -23,6 +23,7 @@ function generateHtml(teamInfo) {
             <div class="row">
                 <div class="team-area col-12 d-flex justify-content-center">    
     
+                
                     <div class="card m-3">
                         <div class="card-header">
                             <h2 class="card-title">fred</h2>
