@@ -1,5 +1,6 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
+const generateHtml = require('./src/generateHtml')
 // REQUIRE TEMPLATE HERE?
 
 // Link employee classes.
@@ -37,15 +38,18 @@ function runApp() {
             message: 'Enter the Manager\'s Office Number:',
             name: 'officeNumber'
             },
-        ])
-        //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+        ]).then(response => {
+            //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+            const manager = new Manager(response.name, response.id, response.email, response.officeNumber)
+            teamInfo.push(manager)
+            addEmployee()
+        })
     //run function to gereate the rest of the team.
-    generateTeam()
+    // addEmployee()
     }
 
-
     // After manager details are filled prompt to Add Intern, Add Engineer, or Finish Team.
-    function generateTeam() {
+    function addEmployee() {
         console.log('//// Add another employee, or finish team ////')
         inquirer.prompt([
             {
@@ -97,8 +101,12 @@ function runApp() {
             message: 'Enter the Engineer\'s Github account:',
             name: 'school'
             },
-        ])
-        //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+        ]).then(response => {
+            //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+            const engineer = new Engineer(response.name, response.id, response.email, response.github)
+            teamInfo.push(engineer)
+        })
+        addEmployee()
     }
 
     // If Add Intern is choosen, prompt:
@@ -125,14 +133,19 @@ function runApp() {
             message: 'Enter the Intern\'s school:',
             name: 'school'
             },
-        ])
-        //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+        ]).then(response => {
+            //CREATE OBJECT FROM INPUT, ADD TO 'teamInfo' ARRAY
+            const intern = new Intern(response.name, response.id, response.email, response.school)
+            teamInfo.push(intern)
+        })
+        addEmployee()
     }
 
-
-    finishTeam() {
+    function finishTeam() {
         console.log(teamInfo)
         //WRITE HTML FILE USING teamInfo 
+        fs.writeFile('NEW-TEAM.html', generateHtml(teamInfo), 'utf-8')
+        // fs.writeFile('NEW-TEAM.html', generateHtml(teamInfo), (err) => err ? console.log(err) : console.log('New HTML file created! Check /dist folder.'));
     }
 
     generateManager()
