@@ -62,12 +62,16 @@ function runApp() {
             }
         ]).then((response) => {
             // console.log(response)
-            if (response.addEmployee === 'Add Engineer') {
+            switch (response.addEmployee) {
+            case 'Add Engineer':
                 addEngineer()
-            } else if (response.addEmployee === 'Add Intern') {
+                break
+            case 'Add Intern':
                 addIntern()
-            } else if (response.addEmployee === 'Finish Team') {
+                break
+            case 'Finish Team':
                 finishTeam()
+                break
             }
         })
         // SWITCH FUNCTION BASED ON ANSWER
